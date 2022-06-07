@@ -16,7 +16,7 @@ var Stack = function() {
       return undefined;
     }
     var delVal = someInstance[length - 1];
-    someInstance[length - 1] = undefined;
+    delete someInstance[length - 1];
     length --;
     return delVal;
   };
