@@ -12,6 +12,7 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
+    //if the object is empty return undefined
     if (length === 0) {
       return undefined;
     }

@@ -13,17 +13,10 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
+    //if object is empty just return undefined;
     if (length === 0) {
       return undefined;
     }
-    // if (someInstance[firstKey] === undefined) {
-    //   firstKey ++;
-    // } else {
-    //   var firstValue = someInstance[firstKey];
-    //   delete someInstance[firstKey];
-    //   length --;
-    //   return firstValue;
-    // }
     var firstValue = someInstance[0];
     someInstance[0] = someInstance[1];
     delete someInstance[1];
