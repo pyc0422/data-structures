@@ -7,6 +7,9 @@ var Queue = function() {
   // Implement the methods below
   someInstance.enqueue = function(value) {
     var key = length;
+    while (someInstance[key]) {
+      key ++;
+    }
     someInstance[key] = value;
     length ++;
     return length;
@@ -17,9 +20,12 @@ var Queue = function() {
     if (length === 0) {
       return undefined;
     }
-    var firstValue = someInstance[0];
-    someInstance[0] = someInstance[1];
-    delete someInstance[1];
+    var curKey = 0;
+    while (someInstance[curKey] === undefined) {
+      curKey ++;
+    }
+    var firstValue = someInstance[curKey];
+    delete someInstance[curKey];
     length --;
     return firstValue;
   };
