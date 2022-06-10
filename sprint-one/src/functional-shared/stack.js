@@ -2,7 +2,7 @@ var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   var someInstance = {
     // eslint-disable-next-line key-spacing
-    storage:[],
+    storage:{},
     count: 0
   };
   _.extend(someInstance, stackMethods);
