@@ -2,10 +2,15 @@
 
 // Instantiate a new graph
 var Graph = function() {
+  this.vertex = [];
+  //obj.node = [];
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  //add node.value;
+  this.vertex.push(node.value);
+  return this;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
@@ -31,7 +36,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
 };
-
+var graph = new Graph();
 /*
  * Complexity: What is the time complexity of the above functions?
  */
