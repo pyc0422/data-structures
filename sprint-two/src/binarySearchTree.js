@@ -36,18 +36,7 @@ var BSTmethod = {
     }
   },
   contains: function(val) {
-    //check newBST is empty or not
-    //   if empty return false
-    //if not empty use while loop to iterate all element in newBST
-    //var cur = this;
-    //while(true)
-    //if(cur.value === value) return true;
-    //else if cur.value < value
-    //       if cur.right -> cur = cur.right
-    //        else return false;
-    // else if cur.value > value
-    //       if cur.left exist -> cur = cur.left
-    //       else return false;
+
     if (this.value === null) {
       return false;
     }
@@ -72,13 +61,6 @@ var BSTmethod = {
 
   },
   depthFirstLog: function(cb) {
-   // var func = BSTmethod.depthFirstLog;
-  //cb(this.value);
-  // if(this.value !== null && this.left === null && this.right === null cb(this.value))
-     // this.left ! == null cb(this.left.value)
-     //this.right !== null cb(this.right.value)
-     // if this.left.left !== null recursion
-     // if this.left'lefr!== null recursion
     var func = function(bst) {
       cb(bst.value);
       if (bst.left !== null) {
