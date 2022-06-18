@@ -68,4 +68,9 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should not use JS object to define graph', function() {
+    graph.addNode(1);
+    expect(Array.isArray(graph.list[1])).to.equal(true);
+  });
 });

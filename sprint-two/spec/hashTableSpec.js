@@ -56,7 +56,6 @@ describe('hashTable', function() {
     hashTable.insert('a', v1);
     hashTable.insert(v2, v2);
     hashTable.insert('a', v3);
-    //[['a', v1],[v2, v2], ['a', v3]]
     expect(hashTable.retrieve(v1)).to.equal(v3);
     expect(hashTable._storage[0].length).to.equal(2);
     window.getIndexBelowMaxForKey = oldHashFunction;
