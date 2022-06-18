@@ -34,5 +34,4 @@ class Queue {
   }
 
 }
-
 var newQueue = new Queue();

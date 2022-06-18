@@ -30,5 +30,3 @@ Queue.prototype.size = function() {
   return this.length;
 };
 var newQueue = new Queue();
-
-

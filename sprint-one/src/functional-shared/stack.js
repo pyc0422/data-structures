@@ -26,5 +26,3 @@ var stackMethods = {
     return this.length;
   }
 };
-
-
