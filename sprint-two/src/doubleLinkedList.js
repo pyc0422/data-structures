@@ -57,8 +57,6 @@ var DoubleLinkedList = function() {
       node.next = list.head;
       list.head = node;
     }
-
-
   };
 
   list.removeTail = function() {

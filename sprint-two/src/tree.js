@@ -4,43 +4,28 @@ var Tree = function(value) {
 
   // your code here
   newTree.children = []; // fix me
+  newTree.parent = null;
   _.extend(newTree, treeMethods);
   return newTree;
 };
-
+/*
+tree = {value: 1,
+        parants: null,
+        children: [
+          {value: 2,
+           parent:1
+           children:[]}}
+        ]}
+*/
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // {value: 0, children: [
-  //  {value:1, children: [
-  //
-  //  ]},
-  //  {value: 2, chinldren:[{subavalue1:4, children:[{}]}]
-
-  // }
-  //]}
   var newTree = Tree(value);
   this.children.push(newTree);
-
+  newTree.parent = this;
 };
 
 treeMethods.contains = function(target) {
-  //  {
-  //   value: 2,
-  //   chinldren:[
-  //        {
-  //          subavalue1:4,
-  //          children:[
-  //            {
-
-  //             }]
-  //            }]
-  //   }
-  // base case: if list.value === tagert return true;
-  // recursion name(checkList): if not children.length === 0, return false;
-  // else: for (var i = 0) checkList(list.children[i]);
-
-
   var checkList = function(list) {
     if (list.value === target) {
       return true;
@@ -58,8 +43,39 @@ treeMethods.contains = function(target) {
 
   };
   return checkList(this);
+};
+
+treeMethods.removeFromParent = function(target) {
+  var recursion = function(item) {
+    for (var i = 0; i < item.length; i++) {
+      if (item[i].value === target) {
+        var findTarget = item[i];
+        item.splice(i, 1);
+        findTarget.parent = null;
+      }
+      if (item[i].children.length !== 0) {
+        recursion(item[i].children);
+      }
+    }
+  };
+  if (this.children && this.children.length) {
+    recursion(this.children);
+  }
 
 };
+
+treeMethods.traverse = function(cb) {
+  var checkList = function(list) {
+    list.value = cb(list.value);
+    if (list.children && list.children.length) {
+      for (var i = 0; i < list.children.length; i++) {
+        checkList(list.children[i]);
+      }
+    }
+  };
+  checkList(this);
+};
+
 
 
 
