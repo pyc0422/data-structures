@@ -52,4 +52,9 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should return undefined if the head is reomoved ', function() {
+    linkedList.addToTail(9);
+    linkedList.removeHead();
+    expect(linkedList.removeHead()).to.equal(undefined);
+  });
 });

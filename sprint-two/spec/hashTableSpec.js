@@ -47,6 +47,20 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should handle complex collisions ', function() {
+    var v1 = 'a';
+    var v2 = 'b';
+    var v3 = 'c';
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert('a', v1);
+    hashTable.insert(v2, v2);
+    hashTable.insert('a', v3);
+    expect(hashTable.retrieve(v1)).to.equal(v3);
+    expect(hashTable._storage[0].length).to.equal(2);
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
