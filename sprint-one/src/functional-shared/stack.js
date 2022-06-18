@@ -1,31 +1,28 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  var someInstance = {
-    // eslint-disable-next-line key-spacing
-    storage:[],
-    count: 0
-  };
-  _.extend(someInstance, stackMethods);
-  return someInstance;
+  // but try not not reference your old code in writing the new style.
+  var stack = {};
+  _.extend(stack, stackMethods);
+  return stack;
 };
 
 var stackMethods = {
-  push: function(value) {
-    this.storage[this.count] = value;
-    this.count++;
+  length: 0,
+  push: function(val) {
+    this[this.length] = val;
+    this.length++;
+    return this.length;
   },
-
-  pop: function () {
-    if (this.count > 0) {
-      this.count--;
-      var value = this.storage[this.count];
-      delete this.storage[this.count];
-      return value;
+  pop: function() {
+    if (this.length === 0) {
+      return undefined;
     }
+    var delVal = this[this.length - 1];
+    delete this[this.length - 1];
+    this.length --;
+    return delVal;
   },
-
   size: function() {
-    return this.count;
+    return this.length;
   }
 };
-

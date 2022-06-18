@@ -3,28 +3,28 @@ class Stack {
   // but try not not reference your old code in writing the new style.
 
   constructor() {
-    this.storage = [];
-    this.count = 0;
+    this.length = 0;
   }
 
-  push (value) {
-    this.storage[this.count] = value;
-    this.count++;
+  push(val) {
+    this[this.length] = val;
+    this.length ++;
+    return this.length;
   }
 
   pop() {
-    if (this.count > 0) {
-      this.count--;
-      var value = this.storage[this.count];
-      delete this.storage[this.count];
-      return value;
+    if (this.length === 0) {
+      return undefined;
     }
+    var del = this[this.length - 1];
+    delete this[this.length - 1];
+    this.length --;
+    return del;
   }
 
   size() {
-    return this.count;
+    return this.length;
   }
-
 }
 
-var SomeInstance = new Stack();
+var newStack = new Stack();
